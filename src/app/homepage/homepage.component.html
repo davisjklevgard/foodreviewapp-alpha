@@ -1,0 +1,10 @@
+<h2>Top Restaurants</h2>
+<div class="restaurant-menu">
+<!--  restaurant menu will be in the css-->
+  <a *ngFor="let restaurant of restaurants"
+     routerLink="/detail/{{restaurant.id}}">
+    {{restaurant.name}}
+  </a>
+</div>
+
+<!--<app-restaurant-search></app-restaurant-search>-->
