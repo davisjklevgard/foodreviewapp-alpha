@@ -6,6 +6,8 @@ import { Restaurant } from './restaurants';
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
+  constructor() {
+  }
   createDb() {
     const restaurants = [
       { id: 12, name: 'Dr. Nice' },
