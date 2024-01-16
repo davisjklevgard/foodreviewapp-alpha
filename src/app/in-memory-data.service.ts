@@ -10,15 +10,15 @@ export class InMemoryDataService implements InMemoryDbService {
   }
   createDb() {
     const restaurants = [
-      { id: 12, name: 'Dr. Nice' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr. IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 12, name: 'Randys' },
+      { id: 13, name: 'Rice Palace' },
+      { id: 14, name: 'Texas Roadhouse' },
+      { id: 15, name: 'Red Lobster' },
+      { id: 16, name: 'McDonalds' },
+      { id: 17, name: 'Wendys' },
+      { id: 18, name: 'China Wok' },
+      { id: 19, name: 'Akame' },
+      { id: 20, name: 'Olive Garden' }
     ];
     return {restaurants};
   }
