@@ -30,6 +30,10 @@ export class RestaurantService {
       );
   }
 
+  // getRestaurants(): Observable<Restaurant[]> {
+  //   return of(Restaurant);
+  // }
+
   /** GET restaurant by id. Return `undefined` when id not found */
   getRestaurantNo404<Data>(id: number): Observable<Restaurant> {
     const url = `${this.restaurantsUrl}/?id=${id}`;
@@ -59,12 +63,13 @@ export class RestaurantService {
       // if not search term, return empty restaurant array.
       return of([]);
     }
-    return this.http.get<Restaurant[]>(`${this.restaurantsUrl}/?name=${term}`).pipe(
+    return this.http.get<Restaurant[]>(`${this.restaurantsUrl}/?name=$(term)`).pipe(
       tap(x => x.length ?
         this.log(`found restaurants matching "${term}"`) :
         this.log(`no restaurants matching "${term}"`)),
       catchError(this.handleError<Restaurant[]>('searchRestaurants', []))
     );
+    console.log("did not do anything")
   }
 
   //////// Save methods //////////

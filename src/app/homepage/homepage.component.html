@@ -2,9 +2,9 @@
 <div class="restaurant-menu">
 <!--  restaurant menu will be in the css-->
   <a *ngFor="let restaurant of restaurants"
-     routerLink="/detail/{{restaurant.id}}">
+     routerLink="/restaurant-page/{{restaurant.id}}">
     {{restaurant.name}}
   </a>
 </div>
 
-<!--<app-restaurant-search></app-restaurant-search>-->
+<app-search></app-search>
