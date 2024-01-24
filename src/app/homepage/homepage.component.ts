@@ -18,7 +18,7 @@ export class HomepageComponent implements OnInit {
 
   getRestaurants(): void {
     this.restaurantService.getRestaurants()
-      .subscribe(restaurants => this.restaurants = restaurants.slice(1, 5));
+      .subscribe(restaurants => this.restaurants = restaurants.slice(0, 5));
   }
 }
 

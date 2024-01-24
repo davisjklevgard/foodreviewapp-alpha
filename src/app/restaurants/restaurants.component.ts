@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Restaurant} from "../restaurants";
 import {RestaurantService} from "../restaurant.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-restaurants',
@@ -9,7 +10,7 @@ import {RestaurantService} from "../restaurant.service";
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants: Restaurant[] = [];
+  public restaurants: Restaurant[] = [];
 
   constructor(private restaurantService: RestaurantService) { }
 
@@ -20,6 +21,7 @@ export class RestaurantsComponent implements OnInit {
   getRestaurants(): void {
     this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
+    console.log("we have entered get restaurants")
   }
 
   add(name: string): void {

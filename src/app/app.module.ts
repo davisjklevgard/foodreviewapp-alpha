@@ -9,8 +9,9 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SearchComponent } from './search/search.component';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService } from './in-memory-data.service';
+import { DishComponent } from './dish/dish.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     RestaurantsComponent,
     RestaurantPageComponent,
     MessagesComponent,
-    SearchComponent
+    SearchComponent,
+    DishComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    //HttpClientInMemoryWebApiModule.forRoot(
+      //InMemoryDataService, { dataEncapsulation: false }
+
   ],
   providers: [],
   bootstrap: [AppComponent]

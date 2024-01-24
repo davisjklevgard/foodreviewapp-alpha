@@ -6,12 +6,18 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Restaurant } from './restaurants';
 import { MessageService } from './message.service';
+import {environment} from "../environments/environment";
 
-
+// interface GetResponse {
+//   _embedded: {
+//     restaurants: Restaurant[];
+//     _links: {self: {href: string}};
+//   };
+// }
 @Injectable({ providedIn: 'root' })
 export class RestaurantService {
 
-  private restaurantsUrl = 'api/restaurants';  // URL to web api
+  private restaurantsUrl = environment.apiBaseUrl;  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,18 +27,39 @@ export class RestaurantService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
+
+
   /** GET restaurants from the server */
-  getRestaurants(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.restaurantsUrl)
-      .pipe(
-        tap(_ => this.log('fetched restaurants')),
-        catchError(this.handleError<Restaurant[]>('getRestaurants', []))
-      );
+  // getRestaurants(): Observable<Restaurant[]> {
+  //   return this.http.get<Restaurant[]>(this.restaurantsUrl)
+  //     .pipe(
+  //       tap(_ => this.log('fetched restaurants')),
+  //       catchError(this.handleError<Restaurant[]>('getRestaurants', []))
+  //     );
+  // }
+
+  public getRestaurants(): Observable<Restaurant[]> {
+    console.log("this is the get restaurant getting all the restaurants");
+    return this.http.get<Restaurant[]>(`${this.restaurantsUrl}/restaurant/all`);
   }
 
-  // getRestaurants(): Observable<Restaurant[]> {
-  //   return of(Restaurant);
-  // }
+  public getRestaurantById(restaurantId: number): Observable<Restaurant> {
+    console.log("we entered get res by id");
+    return this.http.get<Restaurant>(`${this.restaurantsUrl}/restaurant/find/${restaurantId}`);
+
+  }
+
+  public addRestaurant(restaurant: Restaurant): Observable<Restaurant> {
+    return this.http.post<Restaurant>(`${this.restaurantsUrl}/restaurant/add`, restaurant);
+  }
+
+  public updateRestaurant(restaurant: Restaurant): Observable<Restaurant> {
+    return this.http.put<Restaurant>(`${this.restaurantsUrl}/restaurant/update`, restaurant);
+  }
+
+  public deleteRestaurant(restaurantId: number): Observable<void> {
+    return this.http.delete<void>(`${this.restaurantsUrl}/restaurant/delete/${restaurantId}`);
+  }
 
   /** GET restaurant by id. Return `undefined` when id not found */
   getRestaurantNo404<Data>(id: number): Observable<Restaurant> {
@@ -69,36 +96,35 @@ export class RestaurantService {
         this.log(`no restaurants matching "${term}"`)),
       catchError(this.handleError<Restaurant[]>('searchRestaurants', []))
     );
-    console.log("did not do anything")
   }
 
   //////// Save methods //////////
 
   /** POST: add a new restaurant to the server */
-  addRestaurant(restaurant: Restaurant): Observable<Restaurant> {
-    return this.http.post<Restaurant>(this.restaurantsUrl, restaurant, this.httpOptions).pipe(
-      tap((newRestaurant: Restaurant) => this.log(`added restaurant w/ id=${newRestaurant.id}`)),
-      catchError(this.handleError<Restaurant>('addRestaurant'))
-    );
-  }
+  // addRestaurant(restaurant: Restaurant): Observable<Restaurant> {
+  //   return this.http.post<Restaurant>(this.restaurantsUrl, restaurant, this.httpOptions).pipe(
+  //     tap((newRestaurant: Restaurant) => this.log(`added restaurant w/ id=${newRestaurant.id}`)),
+  //     catchError(this.handleError<Restaurant>('addRestaurant'))
+  //   );
+  // }
 
   /** DELETE: delete the restaurant from the server */
-  deleteRestaurant(id: number): Observable<Restaurant> {
-    const url = `${this.restaurantsUrl}/${id}`;
-
-    return this.http.delete<Restaurant>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted restaurant id=${id}`)),
-      catchError(this.handleError<Restaurant>('deleteRestaurant'))
-    );
-  }
+  // deleteRestaurant(id: number): Observable<Restaurant> {
+  //   const url = `${this.restaurantsUrl}/${id}`;
+  //
+  //   return this.http.delete<Restaurant>(url, this.httpOptions).pipe(
+  //     tap(_ => this.log(`deleted restaurant id=${id}`)),
+  //     catchError(this.handleError<Restaurant>('deleteRestaurant'))
+  //   );
+  // }
 
   /** PUT: update the restaurant on the server */
-  updateRestaurant(restaurant: Restaurant): Observable<any> {
-    return this.http.put(this.restaurantsUrl, restaurant, this.httpOptions).pipe(
-      tap(_ => this.log(`updated restaurant id=${restaurant.id}`)),
-      catchError(this.handleError<any>('updateRestaurant'))
-    );
-  }
+  // updateRestaurant(restaurant: Restaurant): Observable<any> {
+  //   return this.http.put(this.restaurantsUrl, restaurant, this.httpOptions).pipe(
+  //     tap(_ => this.log(`updated restaurant id=${restaurant.id}`)),
+  //     catchError(this.handleError<any>('updateRestaurant'))
+  //   );
+  // }
 
   /**
    * Handle Http operation that failed.
