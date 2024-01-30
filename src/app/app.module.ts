@@ -10,8 +10,9 @@ import { RestaurantPageComponent } from './restaurant-page/restaurant-page.compo
 import { MessagesComponent } from './messages/messages.component';
 import { SearchComponent } from './search/search.component';
 //import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService } from './in-memory-data.service';
 import { DishComponent } from './dish/dish.component';
+import { DishReviewComponent } from './dish-review/dish-review.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DishComponent } from './dish/dish.component';
     RestaurantPageComponent,
     MessagesComponent,
     SearchComponent,
-    DishComponent
+    DishComponent,
+    DishReviewComponent
   ],
   imports: [
     BrowserModule,

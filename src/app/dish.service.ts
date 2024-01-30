@@ -58,18 +58,18 @@ export class DishService {
   // }
 
   /** GET dish by id. Return `undefined` when id not found */
-  // getDishNo404<Data>(id: number): Observable<Dish> {
-  //   const url = `${this.dishesUrl}/?id=${id}`;
-  //   return this.http.get<Dish[]>(url)
-  //     .pipe(
-  //       map(dish => dish[0]), // returns a {0|1} element array
-  //       tap(h => {
-  //         const outcome = h ? 'fetched' : 'did not find';
-  //         this.log(`${outcome} dish id=${id}`);
-  //       }),
-  //       catchError(this.handleError<Dish>(`getDish id=${id}`))
-  //     );
-  // }
+  getDishNo404<Data>(id: number): Observable<Dish> {
+    const url = `${this.dishesUrl}/?id=${id}`;
+    return this.http.get<Dish[]>(url)
+      .pipe(
+        map(dish => dish[0]), // returns a {0|1} element array
+        tap(h => {
+          const outcome = h ? 'fetched' : 'did not find';
+          this.log(`${outcome} dish id=${id}`);
+        }),
+        catchError(this.handleError<Dish>(`getDish id=${id}`))
+      );
+  }
 
   /** GET dish by id. Will 404 if id not found */
   // getDish(id: number): Observable<Dish> {

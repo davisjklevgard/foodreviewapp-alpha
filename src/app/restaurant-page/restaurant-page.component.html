@@ -10,22 +10,30 @@
 
       <div (click)="toggleSection('Appetizer')" class="toggle"><h3>Appetizers</h3></div>
       <div class="appetizer" *ngIf="showAppetizer">
-        <div *ngIf="dish.course == 'Appetizer'"><p>{{dish.name}}</p></div>
+        <div *ngIf="dish.course == 'Appetizer'">
+          <a routerLink="/dish/{{dish.id}}">
+          <p>{{dish.name}}</p></a></div>
       </div>
 
       <div (click)="toggleSection('Entree')" class="toggle"><h3>Entree</h3></div>
       <div class="entree" *ngIf="showEntree">
-        <div *ngIf="dish.course == 'Entree'"><p>{{dish.name}}</p></div>
+        <div *ngIf="dish.course == 'Entree'">
+          <a routerLink="/dish/{{dish.id}}">
+          <p>{{dish.name}}</p></a></div>
       </div>
 
       <div (click)="toggleSection('Side')" class="toggle"><h3>Side</h3></div>
       <div class="side" *ngIf="showSide">
-        <div *ngIf="dish.course == 'Side'"><p>{{dish.name}}</p></div>
+        <div *ngIf="dish.course == 'Side'">
+          <a routerLink="/dish/{{dish.id}}">
+          <p>{{dish.name}}</p></a></div>
       </div>
 
       <div (click)="toggleSection('Dessert')" class="toggle"><h3>Dessert</h3></div>
       <div class="dessert" *ngIf="showDessert">
-        <div *ngIf="dish.course == 'Dessert'"><p>{{dish.name}}</p></div>
+        <div *ngIf="dish.course == 'Dessert'">
+          <a routerLink="/dish/{{dish.id}}">
+          <p>{{dish.name}}</p></a></div>
       </div>
 
     </div>
