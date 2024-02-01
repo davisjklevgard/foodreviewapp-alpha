@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSliderModule } from '@angular/material/slider';
 import { Restaurant } from 'app/restaurants';
 
 @Component({
