@@ -1,13 +1,20 @@
 <div *ngIf="dish">
 
   <h2>{{dish.name}}</h2>
-  <p>{{dish.restaurant}}</p>
-  <p>{{dish.price}}</p>
-  <p>{{dish.course}}</p>
+  <p>Restaurant: {{dish.restaurant}}</p>
+  <p>Price : ${{dish.price}}</p>
+  <p>Course: {{dish.course}}</p>
+  <div *ngFor="let review of dishReview">
+  <div *ngIf="review.dishId == dish.id">
+  <p>Overall Score: {{review.overallScore}}</p>
+  </div>Î
+  </div>
 
-  <div class="reviewDish"><button>Review</button></div>
+  <div class="reviewDish"><button routerLink="review/add">Review</button></div>
 
 <!--  Add in the standards for favorite, dislike, to try, and the score-->
+
+
 
 
 </div>

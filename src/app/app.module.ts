@@ -9,10 +9,12 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SearchComponent } from './search/search.component';
-//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DishComponent } from './dish/dish.component';
 import { DishReviewComponent } from './dish-review/dish-review.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material/button";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -30,12 +32,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    //HttpClientInMemoryWebApiModule.forRoot(
-      //InMemoryDataService, { dataEncapsulation: false }
-
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

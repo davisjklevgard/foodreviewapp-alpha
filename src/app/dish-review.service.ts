@@ -22,11 +22,12 @@ export class DishReviewService {
     private messageService: MessageService) { }
 
   public getDishReviews(): Observable<DishReview[]> {
+    console.log("we entered and got the dish reviews");
     return this.http.get<DishReview[]>(`${this.dishReviewUrl}/dishReview/all`);
   }
 
-  public getDishReviewById(dishReviewId: number): Observable<DishReview> {
-    return this.http.get<DishReview>(`${this.dishReviewUrl}/dishReview/find/${dishReviewId}`);
+  public getDishReviewById(dishId: number): Observable<DishReview> {
+    return this.http.get<DishReview>(`${this.dishReviewUrl}/dishReview/find/${dishId}`);
   }
 
   public addDishReview(dishReview: DishReview): Observable<DishReview> {
