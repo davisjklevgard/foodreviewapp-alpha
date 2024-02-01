@@ -13,8 +13,9 @@ import { DishComponent } from './dish/dish.component';
 import { DishReviewComponent } from './dish-review/dish-review.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
-import {MatSliderModule} from "@angular/material/slider";
+import { MatButtonModule } from "@angular/material/button";
+import { MatSliderModule } from "@angular/material/slider";
+import { RestaurantReviewComponent } from './restaurant-review/restaurant-review.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatSliderModule} from "@angular/material/slider";
     MessagesComponent,
     SearchComponent,
     DishComponent,
-    DishReviewComponent
+    DishReviewComponent,
+    RestaurantReviewComponent
   ],
   imports: [
     BrowserModule,

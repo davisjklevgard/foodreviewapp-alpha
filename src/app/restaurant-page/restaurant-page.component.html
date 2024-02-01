@@ -1,6 +1,9 @@
 <div *ngIf="restaurant">
 
-  <h2>{{restaurant.name | uppercase}}</h2>
+  <div class="flex-container">
+    <h2>{{restaurant.name | uppercase}}</h2>
+    <button mat-raised-button color="primary" (click)="openDialog(restaurant)">Leave a review</button>
+  </div>
   <p>{{restaurant.address}}</p>
   <p>{{restaurant.phone}}</p>
   <p>{{restaurant.cuisine}}</p>

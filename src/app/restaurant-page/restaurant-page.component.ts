@@ -7,18 +7,24 @@ import { RestaurantService } from '../restaurant.service';
 import { Dish } from '../dish';
 import { DishService } from "../dish.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import { MatDialog } from '@angular/material/dialog';
+import { RestaurantReviewComponent } from 'app/restaurant-review/restaurant-review.component';
+
+// export interface DialogData {
+//   restaurant: Restaurant
+// }
 
 @Component({
   selector: 'app-restaurant-page',
   templateUrl: './restaurant-page.component.html',
   styleUrls: [ './restaurant-page.component.css' ]
 })
-//export class RestaurantPageComponent implements OnInit
 export class RestaurantPageComponent implements OnInit{
+
   // restaurant: Restaurant | undefined;
 
-   restaurant?: Restaurant;
-   public dishes: Dish[] = [];
+  restaurant?: Restaurant;
+  public dishes: Dish[] = [];
   showAppetizer: boolean = false;
   showEntree: boolean = false;
   showSide: boolean = false;
@@ -28,7 +34,8 @@ export class RestaurantPageComponent implements OnInit{
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
     private dishService: DishService,
-    private location: Location
+    private location: Location,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +59,12 @@ export class RestaurantPageComponent implements OnInit{
         alert(error.message);
       }
     )
+  }
 
+  openDialog(restaurant: Restaurant) {
+    this.dialog.open(RestaurantReviewComponent, {
+      data: restaurant,
+    });
   }
 
   toggleSection(section: string): void {

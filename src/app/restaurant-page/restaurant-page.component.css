@@ -22,3 +22,8 @@ button:disabled {
   color: #ccc;
   cursor: auto;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
