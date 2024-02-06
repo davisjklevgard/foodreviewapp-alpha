@@ -10,10 +10,10 @@ import {DishReviewComponent} from "./dish-review/dish-review.component";
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomepageComponent },
-  { path: 'restaurant-page/:id', component: RestaurantPageComponent },
+  { path: 'restaurant-page', component: RestaurantPageComponent },
   { path: 'restaurants', component: RestaurantsComponent },
-  { path: 'dish/:id', component: DishComponent },
-  { path: 'review/add', component: DishReviewComponent}
+  { path: 'dish', component: DishComponent },
+  { path: 'dish/review/add', component: DishReviewComponent}
 
 ];
 

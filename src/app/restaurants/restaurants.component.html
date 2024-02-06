@@ -12,7 +12,7 @@
 
 <ul class="restaurants">
   <li *ngFor="let restaurant of restaurants">
-    <a routerLink="/restaurant-page/{{restaurant.id}}">
+    <a routerLink="/restaurant-page" [queryParams]="{ id: restaurant.id }">
       <span class="badge">{{restaurant.id}}</span> {{restaurant.name}}
     </a>
     <button type="button" class="delete" title="delete restaurant"

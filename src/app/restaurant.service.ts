@@ -45,7 +45,7 @@ export class RestaurantService {
 
   public getRestaurantById(restaurantId: number): Observable<Restaurant> {
     console.log("we entered get res by id");
-    return this.http.get<Restaurant>(`${this.restaurantsUrl}/restaurant/find/${restaurantId}`);
+    return this.http.get<Restaurant>(`${this.restaurantsUrl}/restaurant/find?id=${restaurantId}`);
 
   }
 
@@ -58,7 +58,7 @@ export class RestaurantService {
   }
 
   public deleteRestaurant(restaurantId: number): Observable<void> {
-    return this.http.delete<void>(`${this.restaurantsUrl}/restaurant/delete/${restaurantId}`);
+    return this.http.delete<void>(`${this.restaurantsUrl}/restaurant/delete?id=${restaurantId}`);
   }
 
   /** GET restaurant by id. Return `undefined` when id not found */

@@ -2,8 +2,8 @@
 <div class="restaurant-menu">
 <!--  restaurant menu will be in the css-->
   <a *ngFor="let restaurant of restaurants"
-     routerLink="/restaurant-page/{{restaurant.id}}">
-    {{restaurant.name}}
+     routerLink="/restaurant-page" [queryParams]="{ id: restaurant.id }">
+    {{ restaurant.name }}
   </a>
 </div>
 

@@ -28,7 +28,7 @@ export class DishService {
   }
 
   public getDishById(dishId: number): Observable<Dish> {
-    return this.http.get<Dish>(`${this.dishesUrl}/dish/find/${dishId}`);
+    return this.http.get<Dish>(`${this.dishesUrl}/dish/find?id=${dishId}`);
 
   }
 
@@ -41,7 +41,7 @@ export class DishService {
   }
 
   public deleteDish(dishId: number): Observable<void> {
-    return this.http.delete<void>(`${this.dishesUrl}/dish/delete/${dishId}`);
+    return this.http.delete<void>(`${this.dishesUrl}/dish/delete?id=${dishId}`);
   }
 
   /** GET dish from the server */

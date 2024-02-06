@@ -10,15 +10,23 @@ import { Restaurant } from 'app/restaurants';
   styleUrls: ['./restaurant-review.component.css']
 })
 export class RestaurantReviewComponent implements OnInit {
-  
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public restaurant: Restaurant, 
+    @Inject(MAT_DIALOG_DATA) public restaurant: Restaurant,
   ) {}
-  
+
   ngOnInit(): void {
     console.log(this.restaurant)
   }
-  
+
+  formatLabel(value: number): number {
+    if (value >= 1) {
+      return Math.round(value / 10);
+    }
+
+    return value;
+  }
+
   submitReview(arg0: any) {
     throw new Error('Method not implemented.');
   }
