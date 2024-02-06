@@ -1,10 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import { DishReviewService} from "../dish-review.service";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatSliderModule, MatSliderChange} from '@angular/material/slider';
 import { Dish } from 'app/dish';
-
-
 
 @Component({
   selector: 'app-dish-review',
@@ -20,24 +19,38 @@ export class DishReviewComponent implements OnInit {
     { name: "Doneness", value: 0 }
   ];
 
-  finalReviewScore: any = 0;
+  finalReviewScore: number = 0;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dish: Dish, 
+    private dishReviewService: DishReviewService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.dish)
-  }
-  
+  ngOnInit(): void { }
+
   submitDishReview(arg0: any) {
     throw new Error('Method not implemented.');
   }
-  
+
   updateReviewScore() {
-    const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0)
-    console.log(sumOfScores, this.scores.length)
-    this.finalReviewScore = sumOfScores / this.scores.length
+    const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0);
+
+    this.finalReviewScore = sumOfScores / this.scores.length;
   }
+
+  //   public addReview(bitter: number,
+  //   donenessScore: number,
+  //   overallScore: number,
+  //   presentationScore: number,
+  //   priceScore: number,
+  //   salty: number,
+  //   savory: number,
+  //   sour: number,
+  //   sweet: number,
+  //   temperatureScore: number): void {
+  //     if (!bitter && !donenessScore && !overallScore && !presentationScore && !priceScore
+  //          && !salty && !savory && !sour && !sweet && !temperatureScore) { return; }
+  //     this.dishReviewService.addDishReview({bitter, overallScore, presentationScore, priceScore, donenessScore, salty, savory, sour, sweet, temperatureScore})
+  //   }
 
 }

@@ -21,7 +21,6 @@ export class RestaurantsComponent implements OnInit {
   getRestaurants(): void {
     this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
-    console.log("we have entered get restaurants")
   }
 
   add(name: string): void {
