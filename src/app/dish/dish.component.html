@@ -10,7 +10,7 @@
   </div>
   </div>
 
-  <div class="reviewDish"><button routerLink="review/add">Review</button></div>
+  <div class="reviewDish"><button routerLink="review/add" [queryParams]="{ id: dish.id }">Review</button></div>
 
 <!--  Add in the standards for favorite, dislike, to try, and the score-->
 

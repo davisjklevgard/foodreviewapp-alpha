@@ -37,7 +37,7 @@ export class DishComponent implements OnInit {
   }
 
   public getDish(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.queryParamMap.get('id'));
     this.dishService.getDishById(id).subscribe(dish => this.dish = dish);
   }
 

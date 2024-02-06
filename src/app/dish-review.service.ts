@@ -27,7 +27,7 @@ export class DishReviewService {
   }
 
   public getDishReviewById(dishId: number): Observable<DishReview> {
-    return this.http.get<DishReview>(`${this.dishReviewUrl}/dishReview/find/${dishId}`);
+    return this.http.get<DishReview>(`${this.dishReviewUrl}/dishReview/find?id=${dishId}`);
   }
 
   public addDishReview(dishReview: DishReview): Observable<DishReview> {
@@ -39,6 +39,6 @@ export class DishReviewService {
   }
 
   public deleteDishReview(dishReviewId: number): Observable<void> {
-    return this.http.delete<void>(`${this.dishReviewUrl}/dishReview/delete/${dishReviewId}`);
+    return this.http.delete<void>(`${this.dishReviewUrl}/dishReview/delete?id=${dishReviewId}`);
   }
 }

@@ -44,8 +44,7 @@ export class RestaurantPageComponent implements OnInit{
   }
 
   getRestaurant(): void {
-    //const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.queryParamMap.get('id'));
     this.restaurantService.getRestaurantById(id)
       .subscribe(restaurant => this.restaurant = restaurant);
   }
