@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'restaurant-page', component: RestaurantPageComponent },
   { path: 'restaurants', component: RestaurantsComponent },
   { path: 'dish', component: DishComponent },
-  { path: 'dish/review/add', component: DishReviewComponent}
+  // { path: 'dish/review/add', component: DishReviewComponent}
 
 ];
 

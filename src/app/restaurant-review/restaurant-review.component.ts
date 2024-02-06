@@ -11,13 +11,22 @@ import { Restaurant } from 'app/restaurants';
 })
 export class RestaurantReviewComponent implements OnInit {
 
+  scores = [
+    { name: "Price", value: 0 },
+    { name: "Service", value: 0 },
+    { name: "Cleanliness", value: 0 },
+    { name: "Atmosphere", value: 0 },
+    { name: "Accessibility", value: 0 },
+    { name: "Location", value: 0 },
+  ];
+
+  finalReviewScore: number = 0;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public restaurant: Restaurant,
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.restaurant)
-  }
+  ngOnInit(): void { }
 
   formatLabel(value: number): number {
     if (value >= 1) {
@@ -27,8 +36,14 @@ export class RestaurantReviewComponent implements OnInit {
     return value;
   }
 
-  submitReview(arg0: any) {
+  submitRestaurantReview(restaurant: Restaurant) {
     throw new Error('Method not implemented.');
+  }
+
+  updateReviewScore() {
+    const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0);
+
+    this.finalReviewScore = sumOfScores / this.scores.length;
   }
 
 }

@@ -18,7 +18,6 @@ export class DishReviewComponent implements OnInit {
     { name: "Temperature", value: 0 },
     { name: "Doneness", value: 0 }
   ];
-
   finalReviewScore: number = 0;
 
   constructor(
