@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Dish } from "../dish";
 import { DishService} from "../dish.service";
 import {ActivatedRoute} from "@angular/router";
-//import {MatDialog,  MAT_DIALOG_DATA,  MatDialogTitle,  MatDialogContent,} from '@angular/material/dialog';
 import { DishReview } from "../dish-review";
 import {DishReviewComponent} from "../dish-review/dish-review.component";
 import { DishReviewService} from "../dish-review.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatButtonModule} from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 
 // export interface DialogData {
 //   dish: Dish;
@@ -21,13 +21,14 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class DishComponent implements OnInit {
 
+
   dish?: Dish;
   public dishReview: DishReview[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private dishService: DishService,
-    //private dialog: MatDialog,
+    private dialog: MatDialog,
     private dishReviewService: DishReviewService
   ) {}
 
@@ -52,7 +53,11 @@ export class DishComponent implements OnInit {
     )
   }
 
-
+  openDialog(dish: Dish) {
+    this.dialog.open(DishReviewComponent, {
+      data: dish,
+    }); 
+  }
 
   // public openReview(dish: Dish): void{
   //   const dialogRef= this.dialog.open(DishReviewComponent, {

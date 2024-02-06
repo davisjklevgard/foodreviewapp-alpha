@@ -10,7 +10,9 @@
   </div>
   </div>
 
-  <div class="reviewDish"><button routerLink="review/add" [queryParams]="{ id: dish.id }">Review</button></div>
+
+  <button mat-raised-button color="primary" (click)="openDialog(dish)">Leave a review</button>
+  <!-- <div class="reviewDish"><button routerLink="review/add" [queryParams]="{ id: dish.id }">Review</button></div> -->
 
 <!--  Add in the standards for favorite, dislike, to try, and the score-->
 

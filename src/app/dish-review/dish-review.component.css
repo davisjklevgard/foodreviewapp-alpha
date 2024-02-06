@@ -1,0 +1,14 @@
+ul {
+  list-style: none;
+  padding-top: 1rem;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overallScore {
+  text-align: center;
+  justify-content: center;
+}
