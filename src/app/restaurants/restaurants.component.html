@@ -5,7 +5,7 @@
   <input id="new-restaurant" #restaurantName />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(restaurantName.value); restaurantName.value=''">
+  <button type="button" class="add-button" (click)="addRestaurant(restaurantName.value); restaurantName.value=''">
     Add restaurant
   </button>
 </div>
@@ -19,7 +19,4 @@
             (click)="delete(restaurant)">x</button>
   </li>
 </ul>
-
-
-
 

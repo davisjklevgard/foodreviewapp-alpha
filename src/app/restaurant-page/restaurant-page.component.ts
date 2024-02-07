@@ -1,4 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
 import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -9,10 +8,9 @@ import { DishService } from "../dish.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import { MatDialog } from '@angular/material/dialog';
 import { RestaurantReviewComponent } from 'app/restaurant-review/restaurant-review.component';
-
-// export interface DialogData {
-//   restaurant: Restaurant
-// }
+import { RestaurantReview } from 'app/restaurant-review';
+import { RestaurantReviewService } from 'app/restaurant-review.service';
+import { identifierName } from '@angular/compiler';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -21,10 +19,11 @@ import { RestaurantReviewComponent } from 'app/restaurant-review/restaurant-revi
 })
 export class RestaurantPageComponent implements OnInit{
 
-  // restaurant: Restaurant | undefined;
-
   restaurant?: Restaurant;
+
+  public restaurantReviews: RestaurantReview[] = [];
   public dishes: Dish[] = [];
+  
   showAppetizer: boolean = false;
   showEntree: boolean = false;
   showSide: boolean = false;
@@ -33,6 +32,7 @@ export class RestaurantPageComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
+    private restaurantReviewService: RestaurantReviewService,
     private dishService: DishService,
     private location: Location,
     private dialog: MatDialog,
@@ -41,12 +41,16 @@ export class RestaurantPageComponent implements OnInit{
   ngOnInit(): void {
     this.getRestaurant();
     this.getDishes();
+    // this.getRestaurantReviews();
   }
 
   getRestaurant(): void {
     const id = Number(this.route.snapshot.queryParamMap.get('id'));
     this.restaurantService.getRestaurantById(id)
-      .subscribe(restaurant => this.restaurant = restaurant);
+      .subscribe(restaurant => { 
+        this.restaurant = restaurant; 
+        this.getRestaurantReviews();
+      });
   }
 
   public getDishes(): void {
@@ -56,6 +60,22 @@ export class RestaurantPageComponent implements OnInit{
       },
       (error: HttpErrorResponse)  => {
         alert(error.message);
+      }
+    )
+  }
+
+  public getRestaurantReviews(): void {
+    if (!this.restaurant) return;
+
+    console.log(this.restaurant)
+
+    this.restaurantReviewService.getRestaurantReviewsByRestaurantId(this.restaurant.id).subscribe(
+      (response: RestaurantReview[]) => {
+        this.restaurantReviews = response;
+        console.log(this.restaurantReviews)
+      },
+      (error: HttpErrorResponse) => {
+      alert(error.message);
       }
     )
   }
