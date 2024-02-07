@@ -29,8 +29,8 @@ export class RestaurantReviewService {
     return this.http.get<RestaurantReview>(`${this.restaurantReviewUrl}/restaurantReview/find?id=${restaurantId}`);
   }
 
-  public addRestaurantReview(restaurantReview: RestaurantReview): Observable<RestaurantReview> {
-    return this.http.post<RestaurantReview>(`${this.restaurantReviewUrl}/restaurantReview/add`, restaurantReview);
+  public addRestaurantReview(newReview: RestaurantReview): Observable<RestaurantReview> {
+    return this.http.post<RestaurantReview>(`${this.restaurantReviewUrl}/restaurantReview/add`, newReview);
   }
 
   public updateRestaurantReview(restaurantReview: RestaurantReview): Observable<RestaurantReview> {

@@ -1,14 +1,14 @@
 export interface RestaurantReview {
   [key: string]: any;
   // id: number;
-  priceScore: number;
-  serviceScore: number;
-  locationScore: number;
-  atmosphereScore: number;
-  cleanlinessScore: number;
-  availabilityScore: number;
-  accessibilityScore: number;
-  overallScore: number;
-  comments: string;
+  price: number;
+  service: number;
+  location: number;
+  atmosphere: number;
+  cleanliness: number;
+  availability: number;
+  accessibility: number;
+  overall: number;
+  comment: string;
   restaurantId: number;
 }
