@@ -31,6 +31,34 @@ export class DishReviewComponent implements OnInit {
 
   finalReviewScore: number = 0;
 
+  dishReview: DishReview = {
+    bitter: 0,
+    doneness: 0,
+    overall: 0,
+    presentation: 0,
+    price: 0,
+    salty: 0,
+    savory: 0,
+    sour: 0,
+    sweet: 0,
+    temperature: 0,
+    dishId: this.dish.id,
+    comment: "",
+  }
+
+  boundScores: string[] = [
+    "bitter",
+      "doneness",
+      "presentation",
+      "price",
+      "salty",
+      "savory",
+      "sour",
+      "sweet",
+      "temperature",
+      "comment"
+  ]
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public dish: Dish,
     private dishReviewService: DishReviewService
@@ -43,17 +71,13 @@ export class DishReviewComponent implements OnInit {
   }
 
   updateReviewScore() {
-    const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0);
+      const sumOfScores: number = this.boundScores.reduce((acc, score) => acc + this.dishReview[score], 0);
 
-    this.finalReviewScore = sumOfScores / this.scores.length;
+      this.dishReview.overall = sumOfScores / this.boundScores.length;
   }
 
-  public addReview( bitter: number, donenessScore: number,  overallScore: number,  presentationScore: number,  priceScore: number,  salty: number,  savory: number,  sour: number,  sweet: number,  temperatureScore: number,  dishId: number,  comment: String): void {
-    comment = comment.trim();
-    this.dishReviewService.addDishReview({bitter, donenessScore, overallScore, presentationScore, priceScore, salty, savory, sour, sweet, temperatureScore, dishId, comment} as DishReview)
-      .subscribe(dishReview => {
-        console.log('Review added:', dishReview);
-      })
+  public addReview(): void {
+    this.dishReviewService.addDishReview(this.dishReview).subscribe();
   }
 
   //   public addReview(bitter: number,

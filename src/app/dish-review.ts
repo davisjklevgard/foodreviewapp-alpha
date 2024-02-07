@@ -1,15 +1,16 @@
 export interface DishReview {
-  id: number;
+  [key: string]: any;
+  //id: number;
   bitter: number;
-  donenessScore: number;
-  overallScore: number;
-  presentationScore: number;
-  priceScore: number;
+  doneness: number;
+  overall: number;
+  presentation: number;
+  price: number;
   salty: number;
   savory: number;
   sour: number;
   sweet: number;
-  temperatureScore: number;
+  temperature: number;
   dishId: number;
   comment: String;
 }

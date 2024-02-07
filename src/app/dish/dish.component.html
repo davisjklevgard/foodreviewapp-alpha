@@ -6,7 +6,7 @@
   <p>Course: {{dish.course}}</p>
   <div *ngFor="let review of dishReview">
   <div *ngIf="review.dishId == dish.id">
-  <p>Overall Score: {{review.overallScore}}</p>
+  <p>Overall Score: {{review.overall}}</p>
   </div>
   </div>
 
@@ -18,7 +18,7 @@
 
   <div class="reviews" *ngFor="let review of dishReview">
     <div *ngIf="review.dishId == dish.id">
-      <p>Overall Score: {{review.overallScore}}</p>
+      <p>Overall Score: {{review.overall}}</p>
       <div id="tastes"><p>Tastes</p>
       <p>salty: {{review.salty}}/10</p>
       <p>sweet: {{review.sweet}}/10</p>
@@ -28,10 +28,10 @@
       </div>
       <div id="scores">
         <p>Scores</p>
-        <p>Presentation: {{review.presentationScore}}/10</p>
-        <p>Price: {{review.priceScore}}/10</p>
-        <p>Temperature: {{review.temperatureScore}}/10</p>
-        <p>Doneness: {{review.donenessScore}}/10</p>
+        <p>Presentation: {{review.presentation}}/10</p>
+        <p>Price: {{review.price}}/10</p>
+        <p>Temperature: {{review.temperature}}/10</p>
+        <p>Doneness: {{review.doneness}}/10</p>
       </div>
       <p>{{review.comment}}</p>
     </div>
