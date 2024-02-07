@@ -1,5 +1,12 @@
 <h1 mat-dialog-title>Rate Your {{ dish.name }} <span class="mat-small">(#{{ dish.id }})</span></h1>
   <ul mat-dialog-content>
+    <li *ngFor="let taste of tastes">
+      <div>{{ taste.name }}</div>
+      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="taste.value" (ngModelChange)="updateReviewScore()"></mat-slider>
+    </li>
+  </ul>
+  <mat-divider></mat-divider>
+  <ul mat-dialog-content>
     <li *ngFor="let score of scores">
       <div>{{ score.name }}</div>
       <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="score.value" (ngModelChange)="updateReviewScore()"></mat-slider>
@@ -8,5 +15,5 @@
   <p class="overallScore">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
 
 <div mat-dialog-actions>
-  <button mat-stroked-button color="primary" [mat-dialog-close]="dish" (click)="submitDishReview(dish)">Submit Review</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="dish" (click)="submitDishReview()">Submit Review</button>
 </div>

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatSliderModule, MatSliderChange} from '@angular/material/slider';
 import { Dish } from 'app/dish';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-dish-review',
@@ -12,12 +13,21 @@ import { Dish } from 'app/dish';
 })
 export class DishReviewComponent implements OnInit {
 
-  scores = [
-    { name: "Presentation", value: 0 },
-    { name: "Price", value: 0 },
-    { name: "Temperature", value: 0 },
-    { name: "Doneness", value: 0 }
+  tastes = [
+    { name: "Sweet", value: 0 },
+    { name: "Savory", value: 0 },
+    { name: "Salty", value: 0 },
+    { name: "Bitter", value: 0 },
+    { name: "Sour", value: 0 },
   ];
+
+  scores = [
+    { name: "Price", value: 0 },
+    { name: "Doneness", value: 0 },
+    { name: "Temperature", value: 0 },
+    { name: "Presentation", value: 0 },
+  ];
+
   finalReviewScore: number = 0;
 
   constructor(
@@ -27,7 +37,7 @@ export class DishReviewComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  submitDishReview(arg0: any) {
+  submitDishReview() {
     throw new Error('Method not implemented.');
   }
 

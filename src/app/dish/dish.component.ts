@@ -9,18 +9,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 
-// export interface DialogData {
-//   dish: Dish;
-// }
-
-
 @Component({
   selector: 'app-dish',
   templateUrl: './dish.component.html',
   styleUrls: ['./dish.component.css']
 })
 export class DishComponent implements OnInit {
-
 
   dish?: Dish;
   public dishReview: DishReview[] = [];
@@ -65,13 +59,10 @@ export class DishComponent implements OnInit {
   //     data: dish,
   //   });
   //
-  //
   //   dialogRef.afterClosed().subscribe((result)=>{
   //     console.log('The review can be brought up');
   //     console.log(result);
   //   })
   // }
-
-
 
 }

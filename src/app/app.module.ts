@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
 import { MatSliderModule } from "@angular/material/slider";
+import { MatDividerModule } from "@angular/material/divider";
 import { RestaurantReviewComponent } from './restaurant-review/restaurant-review.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { RestaurantReviewComponent } from './restaurant-review/restaurant-review
     MatDialogModule,
     MatButtonModule,
     MatSliderModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
