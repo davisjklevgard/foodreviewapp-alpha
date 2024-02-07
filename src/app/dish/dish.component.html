@@ -15,4 +15,20 @@
   <!--  Add in the standards for favorite, dislike, to try, and the score-->
 
 
+
+  <div class="reviews" *ngFor="let review of dishReview">
+    <div *ngIf="review.dishId == dish.id">
+      <p>Overall Score: {{review.overallScore}}</p>
+      <p>Tastes</p>
+      <p>salty: {{review.salty}}/10</p>
+      <p>sweet: {{review.sweet}}/10</p>
+      <p>savory: {{review.savory}}/10</p>
+      <p>sour: {{review.sour}}/10</p>
+      <p>bitter: {{review.bitter}}/10</p>
+      <p>Comment</p>
+      <p>{{review.comment}}</p>
+    </div>
+  </div>
+
+
 </div>
