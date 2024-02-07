@@ -1,38 +1,40 @@
 <div *ngIf="restaurant">
 
-  <div class="flex-container">
-    <h2>{{restaurant.name | uppercase}}</h2>
-    <button mat-raised-button color="primary" (click)="openDialog(restaurant)">Leave a review</button>
-  </div>
-  <p>{{restaurant.address}}</p>
-  <p>{{restaurant.phone}}</p>
-  <p>{{restaurant.cuisine}}</p>
+  <h1>{{ restaurant.name | uppercase }}</h1>
+  <ul class="restaurant-data">
+    <li *ngIf="restaurant.cuisine">Cuisine: <span class="mat-h2">{{ restaurant.cuisine }}</span></li>
+    <li *ngIf="restaurant.address">Address: {{ restaurant.address }}</li>
+    <li *ngIf="restaurant.phone">Phone: {{ restaurant.phone }}</li>
+  </ul>
+  <button mat-flat-button color="primary" class="review-button" (click)="openDialog(restaurant)">Leave a review</button>
 
-  <div class="restaurant menu" *ngFor="let dish of dishes">
+  <mat-divider></mat-divider>
+  
+  <div class="restaurant-menu" *ngFor="let dish of dishes">
     <div *ngIf="dish.restaurant == restaurant.name">
 
-      <div (click)="toggleSection('Appetizer')" class="toggle"><h3>Appetizers</h3></div>
+      <div (click)="toggleSection('Appetizer')" class="toggle mat-h3">Appetizers</div>
       <div class="appetizer" *ngIf="showAppetizer">
         <div *ngIf="dish.course == 'Appetizer'">
           <a routerLink="/dish" [queryParams]="{ id: dish.id }">
           <p>{{dish.name}}</p></a></div>
       </div>
 
-      <div (click)="toggleSection('Entree')" class="toggle"><h3>Entree</h3></div>
+      <div (click)="toggleSection('Entree')" class="toggle mat-h3">Entree</div>
       <div class="entree" *ngIf="showEntree">
         <div *ngIf="dish.course == 'Entree'">
           <a routerLink="/dish" [queryParams]="{ id: dish.id }">
           <p>{{dish.name}}</p></a></div>
       </div>
 
-      <div (click)="toggleSection('Side')" class="toggle"><h3>Side</h3></div>
+      <div (click)="toggleSection('Side')" class="toggle mat-h3">Side</div>
       <div class="side" *ngIf="showSide">
         <div *ngIf="dish.course == 'Side'">
           <a routerLink="/dish" [queryParams]="{ id: dish.id }">
           <p>{{dish.name}}</p></a></div>
       </div>
 
-      <div (click)="toggleSection('Dessert')" class="toggle"><h3>Dessert</h3></div>
+      <div (click)="toggleSection('Dessert')" class="toggle mat-h3">Dessert</div>
       <div class="dessert" *ngIf="showDessert">
         <div *ngIf="dish.course == 'Dessert'">
           <a routerLink="/dish" [queryParams]="{ id: dish.id }">
@@ -60,15 +62,8 @@
 
 </div>
 
-<!--  <div><span>id: </span>{{restaurant.id}}</div>-->
-<!--  <div>-->
-<!--    <label for="restaurant-name">Restaurant name: </label>-->
-<!--    <input id="restaurant-name" [(ngModel)]="restaurant.name" placeholder="Restaurant name"/>-->
-<!--  </div>-->
 <!--  <button type="button" (click)="goBack()">go back</button>-->
 <!--  <button type="button" (click)="save()">save</button>-->
 
 <!-- In the component's template -->
 <!--<div>{{ restaurant?.name }}</div>-->
-
-
