@@ -15,26 +15,26 @@ export class RestaurantReviewComponent implements OnInit {
 
   review: RestaurantReview = {
     // id: 0,
-    priceScore: 0,
-    serviceScore: 0,
-    locationScore: 0,
-    atmosphereScore: 0,
-    cleanlinessScore: 0,
-    availabilityScore: 0,
-    accessibilityScore: 0,
-    overallScore: 0,
-    comments: "",
+    price: 0,
+    service: 0,
+    location: 0,
+    atmosphere: 0,
+    cleanliness: 0,
+    availability: 0,
+    accessibility: 0,
+    overall: 0,
+    comment: "",
     restaurantId: this.restaurant.id,
   }
 
   boundScores: string[] = [
-    "priceScore",
-    "serviceScore",
-    "locationScore",
-    "atmosphereScore",
-    "cleanlinessScore",
-    "availabilityScore",
-    "accessibilityScore",
+    "price",
+    "service",
+    "location",
+    "atmosphere",
+    "cleanliness",
+    "availability",
+    "accessibility",
   ];
 
   constructor(
@@ -49,18 +49,14 @@ export class RestaurantReviewComponent implements OnInit {
   updateReviewScore() {
     const sumOfScores: number = this.boundScores.reduce((acc, score) => acc + this.review[score], 0);
 
-    this.review.overallScore = sumOfScores / this.boundScores.length;
+    this.review.overall = sumOfScores / this.boundScores.length;
   }
 
   submitRestaurantReview(): void {    
 
     console.log(this.review)
 
-    this.restaurantReviewService.addRestaurantReview(this.review)
-    
-    // .subscribe(restaurant => {
-      //   this.restaurants.push(restaurant);
-      // });
+    this.restaurantReviewService.addRestaurantReview(this.review).subscribe();
   }
 
 }

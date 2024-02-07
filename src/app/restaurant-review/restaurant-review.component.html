@@ -5,10 +5,10 @@
       <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="review[score]" (ngModelChange)="updateReviewScore()"></mat-slider>
     </li>
   </ul>
-  <p class="overall-score">Overall: <span class="mat-h2">{{ review.overallScore | number: "1.0-2" }}/10</span></p>
+  <p class="overall-score">Overall: <span class="mat-h2">{{ review.overall | number: "1.0-2" }}/10</span></p>
 
   <label for="comment-box">Comments</label>
-  <input type="text" name="comment-box" id="comment-box" [(ngModel)]="review.comments">
+  <input type="text" name="comment-box" id="comment-box" [(ngModel)]="review.comment">
 
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary" [mat-dialog-close]="restaurant" (click)="submitRestaurantReview()">Submit Review</button>
