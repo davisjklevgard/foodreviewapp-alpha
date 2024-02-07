@@ -1,12 +1,15 @@
 <h1 mat-dialog-title>Review {{ restaurant.name }} <span class="mat-small">(#{{ restaurant.id }})</span></h1>
   <ul mat-dialog-content>
-    <li *ngFor="let score of scores">
-      <div>{{ score.name }}</div>
-      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="score.value" (ngModelChange)="updateReviewScore()"></mat-slider>
+    <li *ngFor="let score of boundScores">
+      <p class="mat-h4 score-label">{{ score }}</p>
+      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="review[score]" (ngModelChange)="updateReviewScore()"></mat-slider>
     </li>
   </ul>
-  <p class="overallScore">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
+  <p class="overall-score">Overall: <span class="mat-h2">{{ review.overallScore | number: "1.0-2" }}/10</span></p>
+
+  <label for="comment-box">Comments</label>
+  <input type="text" name="comment-box" id="comment-box" [(ngModel)]="review.comments">
 
 <div mat-dialog-actions>
-  <button mat-stroked-button color="primary" [mat-dialog-close]="restaurant" (click)="submitRestaurantReview(restaurant)">Submit Review</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="restaurant" (click)="submitRestaurantReview()">Submit Review</button>
 </div>
