@@ -12,7 +12,7 @@
       <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="score.value" (ngModelChange)="updateReviewScore()"></mat-slider>
     </li>
   </ul>
-  <p class="overallScore">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
+  <p class="overall-score">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
 
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary" [mat-dialog-close]="dish" (click)="addReview()">Submit Review</button>

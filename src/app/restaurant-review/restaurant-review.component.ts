@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
+import { RestaurantReview } from 'app/restaurant-review';
+import { RestaurantReviewService } from 'app/restaurant-review.service';
 import { Restaurant } from 'app/restaurants';
 
 @Component({
@@ -11,42 +13,54 @@ import { Restaurant } from 'app/restaurants';
 })
 export class RestaurantReviewComponent implements OnInit {
 
-  scores = [
-    { name: "Price", value: 0 },
-    { name: "Service", value: 0 },
-    { name: "Location", value: 0 },
-    { name: "Atmosphere", value: 0 },
-    { name: "Cleanliness", value: 0 },
-    { name: "Availability", value: 0 },
-    { name: "Accessibility", value: 0 },
-  ];
+  review: RestaurantReview = {
+    // id: 0,
+    priceScore: 0,
+    serviceScore: 0,
+    locationScore: 0,
+    atmosphereScore: 0,
+    cleanlinessScore: 0,
+    availabilityScore: 0,
+    accessibilityScore: 0,
+    overallScore: 0,
+    comments: "",
+    restaurantId: this.restaurant.id,
+  }
 
-  finalReviewScore: number = 0;
+  boundScores: string[] = [
+    "priceScore",
+    "serviceScore",
+    "locationScore",
+    "atmosphereScore",
+    "cleanlinessScore",
+    "availabilityScore",
+    "accessibilityScore",
+  ];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public restaurant: Restaurant,
+    private restaurantReviewService: RestaurantReviewService,
   ) {}
 
   ngOnInit(): void {
     console.log(this.restaurant)
   }
 
-  formatLabel(value: number): string {
-    if (value >= 1) {
-      return Math.round(value / 10) + ' points';
-    }
-
-    return `${value}`;
-  }
-
-  submitRestaurantReview(restaurant: Restaurant) {
-    throw new Error('Method not implemented.');
-  }
-
   updateReviewScore() {
-    const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0);
+    const sumOfScores: number = this.boundScores.reduce((acc, score) => acc + this.review[score], 0);
 
-    this.finalReviewScore = sumOfScores / this.scores.length;
+    this.review.overallScore = sumOfScores / this.boundScores.length;
+  }
+
+  submitRestaurantReview(): void {    
+
+    console.log(this.review)
+
+    this.restaurantReviewService.addRestaurantReview(this.review)
+    
+    // .subscribe(restaurant => {
+      //   this.restaurants.push(restaurant);
+      // });
   }
 
 }
