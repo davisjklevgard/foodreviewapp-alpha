@@ -19,12 +19,12 @@ export class RestaurantReviewComponent implements OnInit {
     console.log(this.restaurant)
   }
 
-  formatLabel(value: number): number {
+  formatLabel(value: number): string {
     if (value >= 1) {
-      return Math.round(value / 10);
+      return Math.round(value / 10) + ' points';
     }
 
-    return value;
+    return `${value}`;
   }
 
   submitReview(arg0: any) {
