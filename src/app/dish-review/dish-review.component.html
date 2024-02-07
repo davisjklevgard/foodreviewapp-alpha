@@ -1,32 +1,19 @@
-<!--<h2 mat-dialog-title>Dish Review</h2>-->
-<!--<mat-dialog-content>-->
-<!--  <p>Overall Score: {{data.overallScore}}/10</p>-->
-<!--  <p>Price Score: /10</p>-->
-<!--  <p>Temperature Score:  /10</p>-->
-<!--  <p>Doneness Score:  /10</p>-->
-<!--  <p>Presentation Score:  /10</p>-->
+<h1 mat-dialog-title>Rate Your {{ dish.name }} <span class="mat-small">(#{{ dish.id }})</span></h1>
+  <ul mat-dialog-content>
+    <li *ngFor="let taste of tastes">
+      <div>{{ taste.name }}</div>
+      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="taste.value" (ngModelChange)="updateReviewScore()"></mat-slider>
+    </li>
+  </ul>
+  <mat-divider></mat-divider>
+  <ul mat-dialog-content>
+    <li *ngFor="let score of scores">
+      <div>{{ score.name }}</div>
+      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="score.value" (ngModelChange)="updateReviewScore()"></mat-slider>
+    </li>
+  </ul>
+  <p class="overallScore">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
 
-<!--  <mat-slider min="0" max="100000" step="1000" [displayWith]="formatLabel">-->
-<!--    <input matSliderThumb>-->
-<!--  </mat-slider>-->
-
-<!--</mat-dialog-content>-->
-
-<!--<mat-dialog-actions>-->
-<!--  <button mat-button mat-dialog-close>Cancel</button>-->
-<!--&lt;!&ndash;  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button>&ndash;&gt;-->
-<!--  <button mat-button mat-dialog-close>Submit</button>-->
-<!--</mat-dialog-actions>-->
-
-<h2>Dish Review</h2>
-<div class="overall">Overall Score: /10</div>
-<div class="inputScores">
-  <p>Presentation Score:  /10</p>
-  <p>Temperature Score:  /10</p>
-  <p>Price Score:  /10</p>
-  <p>Doneness Score:  /10</p>
-</div>
-
-<div class="sliders">
-
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="dish" (click)="submitDishReview()">Submit Review</button>
 </div>

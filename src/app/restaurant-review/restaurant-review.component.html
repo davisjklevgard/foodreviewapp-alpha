@@ -1,31 +1,12 @@
-
 <h1 mat-dialog-title>Review {{ restaurant.name }} <span class="mat-small">(#{{ restaurant.id }})</span></h1>
   <ul mat-dialog-content>
-    <li>
-      <div>Price</div>
-      <mat-slider min="0" max="10" step="1" discrete [displayWith]="formatLabel"></mat-slider>
-    </li>
-    <li>
-      <div>Service</div>
-      <mat-slider min="0" max="10" step="1" discrete [displayWith]="formatLabel"></mat-slider>
-    </li>
-    <li>
-      <div>Cleanliness</div>
-      <mat-slider min="0" max="10" step="1" value="0" discrete [displayWith]="formatLabel"></mat-slider>
-    </li>
-    <li>
-      <div>Atmosphere</div>
-      <mat-slider min="0" max="10" step="1" value="0" discrete [displayWith]="formatLabel"></mat-slider>
-    </li>
-    <li>
-      <div>Accessibility</div>
-      <mat-slider min="0" max="10" step="1" value="0" discrete [displayWith]="formatLabel"></mat-slider>
-    </li>
-    <li>
-      <div>Location</div>
-      <mat-slider min="0" max="10" step="1" value="0" discrete [displayWith]="formatLabel"></mat-slider>
+    <li *ngFor="let score of scores">
+      <div>{{ score.name }}</div>
+      <mat-slider min="0" max="10" step="1" value="0" thumbLabel="true" [(ngModel)]="score.value" (ngModelChange)="updateReviewScore()"></mat-slider>
     </li>
   </ul>
+  <p class="overallScore">Overall: <span class="mat-h2">{{ finalReviewScore | number: "1.0-2" }}/10</span></p>
+
 <div mat-dialog-actions>
-  <button mat-stroked-button color="primary" [mat-dialog-close]="restaurant" (click)="submitReview(restaurant)" cdkFocusInitial>Submit Review</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="restaurant" (click)="submitRestaurantReview(restaurant)">Submit Review</button>
 </div>

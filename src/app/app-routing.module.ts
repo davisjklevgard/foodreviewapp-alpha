@@ -5,7 +5,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
 import {DishComponent} from "./dish/dish.component";
-import {DishReviewComponent} from "./dish-review/dish-review.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -13,8 +12,6 @@ const routes: Routes = [
   { path: 'restaurant-page', component: RestaurantPageComponent },
   { path: 'restaurants', component: RestaurantsComponent },
   { path: 'dish', component: DishComponent },
-  { path: 'dish/review/add', component: DishReviewComponent}
-
 ];
 
 @NgModule({
