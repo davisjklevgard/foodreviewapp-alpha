@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle} from "@angular/materi
 import {MatSliderModule, MatSliderChange} from '@angular/material/slider';
 import { Dish } from 'app/dish';
 import { MatDividerModule } from '@angular/material/divider';
+import {DishReview} from "../dish-review";
 
 @Component({
   selector: 'app-dish-review',
@@ -31,7 +32,7 @@ export class DishReviewComponent implements OnInit {
   finalReviewScore: number = 0;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public dish: Dish, 
+    @Inject(MAT_DIALOG_DATA) public dish: Dish,
     private dishReviewService: DishReviewService
   ) {}
 
@@ -45,6 +46,14 @@ export class DishReviewComponent implements OnInit {
     const sumOfScores: number = this.scores.reduce((acc, score) => acc + score.value, 0);
 
     this.finalReviewScore = sumOfScores / this.scores.length;
+  }
+
+  public addReview( bitter: number, donenessScore: number,  overallScore: number,  presentationScore: number,  priceScore: number,  salty: number,  savory: number,  sour: number,  sweet: number,  temperatureScore: number,  dishId: number,  comment: String): void {
+    comment = comment.trim();
+    this.dishReviewService.addDishReview({bitter, donenessScore, overallScore, presentationScore, priceScore, salty, savory, sour, sweet, temperatureScore, dishId, comment} as DishReview)
+      .subscribe(dishReview => {
+        console.log('Review added:', dishReview);
+      })
   }
 
   //   public addReview(bitter: number,

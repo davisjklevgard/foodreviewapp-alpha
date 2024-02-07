@@ -47,22 +47,14 @@ export class DishComponent implements OnInit {
     )
   }
 
+
+
   openDialog(dish: Dish) {
     this.dialog.open(DishReviewComponent, {
       data: dish,
-    }); 
+    });
   }
 
-  // public openReview(dish: Dish): void{
-  //   const dialogRef= this.dialog.open(DishReviewComponent, {
-  //     width: '250px',
-  //     data: dish,
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe((result)=>{
-  //     console.log('The review can be brought up');
-  //     console.log(result);
-  //   })
-  // }
+
 
 }

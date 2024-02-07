@@ -13,19 +13,26 @@
   <button mat-raised-button color="primary" (click)="openDialog(dish)">Leave a review</button>
 
   <!--  Add in the standards for favorite, dislike, to try, and the score-->
-
+<div class="reviewHeader"><h3>Reviews</h3></div>
 
 
   <div class="reviews" *ngFor="let review of dishReview">
     <div *ngIf="review.dishId == dish.id">
       <p>Overall Score: {{review.overallScore}}</p>
-      <p>Tastes</p>
+      <div id="tastes"><p>Tastes</p>
       <p>salty: {{review.salty}}/10</p>
       <p>sweet: {{review.sweet}}/10</p>
       <p>savory: {{review.savory}}/10</p>
       <p>sour: {{review.sour}}/10</p>
       <p>bitter: {{review.bitter}}/10</p>
-      <p>Comment</p>
+      </div>
+      <div id="scores">
+        <p>Scores</p>
+        <p>Presentation: {{review.presentationScore}}/10</p>
+        <p>Price: {{review.priceScore}}/10</p>
+        <p>Temperature: {{review.temperatureScore}}/10</p>
+        <p>Doneness: {{review.donenessScore}}/10</p>
+      </div>
       <p>{{review.comment}}</p>
     </div>
   </div>
