@@ -11,4 +11,5 @@ export interface DishReview {
   sweet: number;
   temperatureScore: number;
   dishId: number;
+  comment: String;
 }
