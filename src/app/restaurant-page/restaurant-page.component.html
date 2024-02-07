@@ -42,6 +42,22 @@
     </div>
   </div>
 
+  <mat-divider></mat-divider>
+  
+  <div class="review-card" *ngFor="let review of restaurantReviews">
+    <div *ngIf="review.restaurantId == restaurant.id">
+      <p>Overall Score: {{ review.overall | number: "1.0-2" }}/10</p>
+      <p>Price: {{ review.price }}/10</p>
+      <p>Service: {{ review.service }}/10</p>
+      <p>Location: {{ review.location }}/10</p>
+      <p>Atmosphere: {{ review.atmosphere }}/10</p>
+      <p>Cleanliness: {{ review.cleanliness }}/10</p>
+      <p>Availability: {{ review.availability }}/10</p>
+      <p>Accessibility: {{ review.accessibility }}/10</p>
+      <em>"{{ review.comment }}" - User</em>
+    </div>
+  </div>
+
 </div>
 
 <!--  <div><span>id: </span>{{restaurant.id}}</div>-->

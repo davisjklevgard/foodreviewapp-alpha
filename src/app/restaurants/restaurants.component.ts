@@ -23,9 +23,10 @@ export class RestaurantsComponent implements OnInit {
       .subscribe(restaurants => this.restaurants = restaurants);
   }
 
-  add(name: string): void {
+  addRestaurant(name: string): void {
     name = name.trim();
-    if (!name) { return; }
+    if (!name) return; 
+
     this.restaurantService.addRestaurant({ name } as Restaurant)
       .subscribe(restaurant => {
         this.restaurants.push(restaurant);

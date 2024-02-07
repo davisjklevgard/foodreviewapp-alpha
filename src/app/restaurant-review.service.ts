@@ -21,8 +21,11 @@ export class RestaurantReviewService {
     private messageService: MessageService) { }
 
   public getRestaurantReviews(): Observable<RestaurantReview[]> {
-    console.log("we entered and got the restaurant reviews");
     return this.http.get<RestaurantReview[]>(`${this.restaurantReviewUrl}/restaurantReview/all`);
+  }
+
+  public getRestaurantReviewsByRestaurantId(restaurantId: number): Observable<RestaurantReview[]> {
+    return this.http.get<RestaurantReview[]>(`${this.restaurantReviewUrl}/restaurantReview/restaurantAll?id=${restaurantId}`);
   }
 
   public getRestaurantReviewById(restaurantId: number): Observable<RestaurantReview> {
