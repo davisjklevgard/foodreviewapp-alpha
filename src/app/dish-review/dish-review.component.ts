@@ -14,29 +14,27 @@ import {DishReview} from "../dish-review";
 })
 export class DishReviewComponent implements OnInit {
 
-  tastes = [
-    { name: "Sweet", value: 0 },
-    { name: "Savory", value: 0 },
-    { name: "Salty", value: 0 },
-    { name: "Bitter", value: 0 },
-    { name: "Sour", value: 0 },
-  ];
-
-  scores = [
-    { name: "Price", value: 0 },
-    { name: "Doneness", value: 0 },
-    { name: "Temperature", value: 0 },
-    { name: "Presentation", value: 0 },
-  ];
-
-  finalReviewScore: number = 0;
+  // tastes = [
+  //   { name: "Sweet", value: 0 },
+  //   { name: "Savory", value: 0 },
+  //   { name: "Salty", value: 0 },
+  //   { name: "Bitter", value: 0 },
+  //   { name: "Sour", value: 0 },
+  // ];
+  //
+  // scores = [
+  //   { name: "Price", value: 0 },
+  //   { name: "Doneness", value: 0 },
+  //   { name: "Temperature", value: 0 },
+  //   { name: "Presentation", value: 0 },
+  // ];
 
   dishReview: DishReview = {
     bitter: 0,
     doneness: 0,
     overall: 0,
     presentation: 0,
-    price: 0,
+    value: 0,
     salty: 0,
     savory: 0,
     sour: 0,
@@ -50,13 +48,12 @@ export class DishReviewComponent implements OnInit {
     "bitter",
       "doneness",
       "presentation",
-      "price",
+      "value",
       "salty",
       "savory",
       "sour",
       "sweet",
-      "temperature",
-      "comment"
+      "temperature"
   ]
 
   constructor(
@@ -80,19 +77,6 @@ export class DishReviewComponent implements OnInit {
     this.dishReviewService.addDishReview(this.dishReview).subscribe();
   }
 
-  //   public addReview(bitter: number,
-  //   donenessScore: number,
-  //   overallScore: number,
-  //   presentationScore: number,
-  //   priceScore: number,
-  //   salty: number,
-  //   savory: number,
-  //   sour: number,
-  //   sweet: number,
-  //   temperatureScore: number): void {
-  //     if (!bitter && !donenessScore && !overallScore && !presentationScore && !priceScore
-  //          && !salty && !savory && !sour && !sweet && !temperatureScore) { return; }
-  //     this.dishReviewService.addDishReview({bitter, overallScore, presentationScore, priceScore, donenessScore, salty, savory, sour, sweet, temperatureScore})
-  //   }
+
 
 }

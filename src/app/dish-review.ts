@@ -5,7 +5,7 @@ export interface DishReview {
   doneness: number;
   overall: number;
   presentation: number;
-  price: number;
+  value: number;
   salty: number;
   savory: number;
   sour: number;

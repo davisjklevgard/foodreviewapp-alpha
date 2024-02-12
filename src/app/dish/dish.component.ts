@@ -36,6 +36,23 @@ export class DishComponent implements OnInit {
     this.dishService.getDishById(id).subscribe(dish => this.dish = dish);
   }
 
+  public favoriteClick(dish: Dish): void {
+    dish.favorite = !dish.favorite;
+    if (dish.dislike = true) {
+      dish.dislike = false;
+    }
+  }
+
+  // Add Dish to Dislikes
+  public dislikeClick(dish: Dish): void {
+    dish.dislike = !dish.dislike;
+    if (dish.favorite = true) {
+      dish.favorite = false;
+    }
+
+    this.dishService.updateDish({dislike})
+  }
+
   public getDishReview(): void{
     this.dishReviewService.getDishReviews().subscribe(
       (response: DishReview[]) => {
