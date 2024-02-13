@@ -5,7 +5,9 @@
   <p>Price : ${{dish.price}}</p>
   <p>Course: {{dish.course}}</p>
   <div class="tryFavDislike">
-
+    <button type="button" (click)="toTryClick(dish)">To Try</button>
+    <button type="button" (click)="favoriteClick(dish)">Favorite</button>
+    <button type="button" (click)="dislikeClick(dish)">Dislike</button>
   </div>
 
   <div *ngFor="let review of dishReview">

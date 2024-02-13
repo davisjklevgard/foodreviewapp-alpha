@@ -38,19 +38,37 @@ export class DishComponent implements OnInit {
 
   public favoriteClick(dish: Dish): void {
     dish.favorite = !dish.favorite;
-    if (dish.dislike = true) {
+    if (dish.dislike) {
       dish.dislike = false;
     }
+
+    this.dishService.updateDish(dish).subscribe(() => {
+      console.log("Did we get to change the database????");
+    })
   }
 
   // Add Dish to Dislikes
   public dislikeClick(dish: Dish): void {
-    dish.dislike = !dish.dislike;
-    if (dish.favorite = true) {
+    dish.dislike == !dish.dislike;
+    if (dish.favorite) {
       dish.favorite = false;
     }
 
-    this.dishService.updateDish({dislike})
+    this.dishService.updateDish(dish).subscribe(() => {
+      console.log("Did we get to change the database????");
+    })
+  }
+
+  public toTryClick(dish: Dish): void {
+    dish.toTry = !dish.toTry;
+    if (dish.dislike || dish.favorite) {
+      dish.favorite = false;
+      dish.dislike = false;
+    }
+
+    this.dishService.updateDish(dish).subscribe(() => {
+      console.log("Did we get to change the database????");
+    })
   }
 
   public getDishReview(): void{
