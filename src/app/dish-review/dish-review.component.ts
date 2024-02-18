@@ -46,14 +46,14 @@ export class DishReviewComponent implements OnInit {
 
   boundScores: string[] = [
     "bitter",
-      "doneness",
-      "presentation",
-      "value",
-      "salty",
-      "savory",
-      "sour",
-      "sweet",
-      "temperature"
+    "salty",
+    "savory",
+    "sour",
+    "sweet",
+    "doneness",
+    "presentation",
+    "value",
+    "temperature"
   ]
 
   constructor(

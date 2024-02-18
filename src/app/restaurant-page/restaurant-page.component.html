@@ -6,10 +6,14 @@
     <li *ngIf="restaurant.address">Address: {{ restaurant.address }}</li>
     <li *ngIf="restaurant.phone">Phone: {{ restaurant.phone }}</li>
   </ul>
+  <div class="overallRestaurantScore">
+    <p>Overall Restaurant Score: {{overallReviewScore}}/10</p>
+  </div>
+
   <button mat-flat-button color="primary" class="review-button" (click)="openDialog(restaurant)">Leave a review</button>
 
   <mat-divider></mat-divider>
-  
+
   <div class="restaurant-menu" *ngFor="let dish of dishes">
     <div *ngIf="dish.restaurant == restaurant.name">
 
@@ -45,7 +49,7 @@
   </div>
 
   <mat-divider></mat-divider>
-  
+
   <div class="review-card" *ngFor="let review of restaurantReviews">
     <div *ngIf="review.restaurantId == restaurant.id">
       <p>Overall Score: {{ review.overall | number: "1.0-2" }}/10</p>

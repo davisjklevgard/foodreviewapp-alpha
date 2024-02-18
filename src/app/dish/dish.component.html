@@ -1,8 +1,10 @@
 <div *ngIf="dish">
 
   <h2>{{dish.name}}</h2>
-  <p>Restaurant: {{dish.restaurant}}</p>
-  <p>Price : ${{dish.price}}</p>
+  <p>Restaurant:</p>
+  <a routerLink="/restaurant-page" [queryParams]="{ id: dish.restaurantId }">{{ dish.restaurant }}
+  </a>
+    <p>Price : ${{dish.price}}</p>
   <p>Course: {{dish.course}}</p>
   <div class="tryFavDislike">
     <button type="button" (click)="toTryClick(dish)">To Try</button>
@@ -10,11 +12,11 @@
     <button type="button" (click)="dislikeClick(dish)">Dislike</button>
   </div>
 
-  <div *ngFor="let review of dishReview">
-  <div *ngIf="review.dishId == dish.id">
-  <p>Overall Score: {{review.overall}}</p>
+
+  <div class="overallDishScore">
+  <p>Overall Dish Score: {{overallReviewScore}}/10</p>
   </div>
-  </div>
+
 
   <button mat-raised-button color="primary" (click)="openDialog(dish)">Leave a review</button>
 

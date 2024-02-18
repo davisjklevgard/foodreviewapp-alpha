@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Rate Your {{ dish.name }} <span class="mat-small">(#{{ dish.id }})</span></h1>
+<h1 mat-dialog-title>Rate Your {{ dish.name }} <span class="mat-small"></span></h1>
   <ul mat-dialog-content>
     <li *ngFor="let score of boundScores">
       <p class="mat-h4 score-label">{{ score }}</p>
@@ -6,6 +6,9 @@
     </li>
   </ul>
   <p class="overall-score">Overall: <span class="mat-h2">{{ dishReview.overall | number: "1.0-2" }}/10</span></p>
+
+<label for="comment-box">Comments</label>
+<input type="text" name="comment-box" id="comment-box" [(ngModel)]="dishReview.comment">
 
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary" [mat-dialog-close]="dish" (click)="addReview()">Submit Review</button>

@@ -7,4 +7,6 @@ export interface Dish {
   toTry: boolean;
   favorite: boolean;
   dislike: boolean;
+  restaurantId: number;
 }
+

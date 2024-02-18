@@ -23,7 +23,9 @@ export class RestaurantPageComponent implements OnInit{
 
   public restaurantReviews: RestaurantReview[] = [];
   public dishes: Dish[] = [];
-  
+  public restaurantCount: number = 0;
+  public overallReviewScore: number = 0;
+
   showAppetizer: boolean = false;
   showEntree: boolean = false;
   showSide: boolean = false;
@@ -47,8 +49,8 @@ export class RestaurantPageComponent implements OnInit{
   getRestaurant(): void {
     const id = Number(this.route.snapshot.queryParamMap.get('id'));
     this.restaurantService.getRestaurantById(id)
-      .subscribe(restaurant => { 
-        this.restaurant = restaurant; 
+      .subscribe(restaurant => {
+        this.restaurant = restaurant;
         this.getRestaurantReviews();
       });
   }
@@ -72,12 +74,23 @@ export class RestaurantPageComponent implements OnInit{
     this.restaurantReviewService.getRestaurantReviewsByRestaurantId(this.restaurant.id).subscribe(
       (response: RestaurantReview[]) => {
         this.restaurantReviews = response;
-        console.log(this.restaurantReviews)
+        this.getOverallRestaurantScore();
       },
       (error: HttpErrorResponse) => {
       alert(error.message);
       }
     )
+  }
+
+  getOverallRestaurantScore(): void {
+    for (let review of this.restaurantReviews) {
+      if (review.restaurantId == this.restaurant?.id) {
+        this.restaurantCount++;
+        this.overallReviewScore += review.overall;
+      }
+    }
+    this.overallReviewScore = this.overallReviewScore / this.restaurantCount;
+    this.overallReviewScore = parseFloat(this.overallReviewScore.toFixed(2));
   }
 
   openDialog(restaurant: Restaurant) {

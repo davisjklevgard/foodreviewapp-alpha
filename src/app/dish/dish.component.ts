@@ -18,6 +18,8 @@ export class DishComponent implements OnInit {
 
   dish?: Dish;
   public dishReview: DishReview[] = [];
+  public dishCount: number = 0;
+  public overallReviewScore: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -75,11 +77,23 @@ export class DishComponent implements OnInit {
     this.dishReviewService.getDishReviews().subscribe(
       (response: DishReview[]) => {
         this.dishReview = response;
+        this.getOverallDishScore();
       },
         (error: HttpErrorResponse) => {
         alert(error.message);
         }
     )
+  }
+
+  getOverallDishScore(): void {
+    for (let review of this.dishReview) {
+      if (review.dishId == this.dish?.id){
+          this.dishCount++;
+          this.overallReviewScore += review.overall;
+      }
+    }
+    this.overallReviewScore = this.overallReviewScore / this.dishCount;
+    this.overallReviewScore = parseFloat(this.overallReviewScore.toFixed(2));
   }
 
 

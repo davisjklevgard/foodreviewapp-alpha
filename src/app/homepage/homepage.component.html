@@ -8,3 +8,27 @@
 </div>
 
 <app-search></app-search>
+<div class="favoriteList">
+  <h2>List of Favorites</h2>
+  <div *ngFor="let dish of dishes">
+    <div *ngIf="dish.favorite">
+      <a routerLink="/dish" [queryParams]="{ id: dish.id }">
+      {{dish.name}}</a>
+    </div>
+  </div>
+</div>
+
+<div class="restaurantOfTheDay">
+  <h2>Random Restaurant</h2>
+  <p><button (click)="getRandomRestaurant()">Restaurant: </button>{{randomRestaurant?.name}}</p>
+</div>
+
+<div class="toTryList">
+  <h2>List to Try</h2>
+  <div  *ngFor="let dish of dishes">
+    <div *ngIf="dish.toTry">
+      <a routerLink="/dish" [queryParams]="{ id: dish.id }">
+      {{dish.name}}</a>
+    </div>
+  </div>
+</div>
