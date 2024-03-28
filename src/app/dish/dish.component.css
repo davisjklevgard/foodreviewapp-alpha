@@ -1,4 +1,18 @@
-.reviews{
-  border: #2c3a41 1px solid;
-  width: 300px;
+.review-card {
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem .1rem rgb(162, 162, 162);
+  width: fit-content;
+  min-width: 10rem;
+  max-width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  display: inline-block;
+}
+
+.review-button {
+  padding: .3rem .5rem;
+  margin: .5rem;
+  height: fit-content;
+  /* width: 7rem; */
+
 }

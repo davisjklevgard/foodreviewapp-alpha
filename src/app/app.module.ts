@@ -17,6 +17,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatDividerModule } from "@angular/material/divider";
 import { RestaurantReviewComponent } from './restaurant-review/restaurant-review.component';
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -30,17 +31,18 @@ import { RestaurantReviewComponent } from './restaurant-review/restaurant-review
     DishReviewComponent,
     RestaurantReviewComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatSliderModule,
-    MatDividerModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatSliderModule,
+        MatDividerModule,
+        MatSortModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

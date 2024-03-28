@@ -1,6 +1,6 @@
 <h2>Top Restaurants</h2>
 <div class="restaurant-menu">
-<!--  restaurant menu will be in the css-->
+  <!--  restaurant menu will be in the css-->
   <a *ngFor="let restaurant of restaurants"
      routerLink="/restaurant-page" [queryParams]="{ id: restaurant.id }">
     {{ restaurant.name }}
@@ -9,13 +9,27 @@
 
 <app-search></app-search>
 <div class="favoriteList">
-  <h2>List of Favorites</h2>
-  <div *ngFor="let dish of dishes">
-    <div *ngIf="dish.favorite">
-      <a routerLink="/dish" [queryParams]="{ id: dish.id }">
-      {{dish.name}}</a>
-    </div>
-  </div>
+
+  <h2>List of Favorite</h2>
+
+  <table matSort (matSortChange)="sortDataFavorite($event)">
+    <tr>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="course">Course</th>
+      <th mat-sort-header="restaurant">Restaurant</th>
+      <th mat-sort-header="rating">Rating</th>
+      <th mat-sort-header="date">Date</th>
+    </tr>
+    <tr ng-container *ngFor="let dish of favoriteDishes">
+      <td routerLink="/dish" [queryParams]="{ id: dish.id }">{{ dish.name }}</td>
+      <td>{{ dish.course }}</td>
+      <td routerLink="/restaurant-page" [queryParams]="{ id: dish.restaurantId }">{{ dish.restaurant }}</td>
+      <td>{{dish.overallScore}}</td>
+      <td>{{dish.dateTime | date: 'short'}}</td>
+      <!-- Include other td elements as needed -->
+    </tr>
+
+  </table>
 </div>
 
 <div class="restaurantOfTheDay">
@@ -25,10 +39,23 @@
 
 <div class="toTryList">
   <h2>List to Try</h2>
-  <div  *ngFor="let dish of dishes">
-    <div *ngIf="dish.toTry">
-      <a routerLink="/dish" [queryParams]="{ id: dish.id }">
-      {{dish.name}}</a>
-    </div>
-  </div>
+  <table matSort (matSortChange)="sortDataToTry($event)">
+    <tr>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="course">Course</th>
+      <th mat-sort-header="restaurant">Restaurant</th>
+      <th mat-sort-header="rating">Rating</th>
+      <th mat-sort-header="date">Date</th>
+    </tr>
+
+    <tr ng-container *ngFor="let dish of toTryDishes">
+      <td routerLink="/dish" [queryParams]="{ id: dish.id }">{{ dish.name }}</td>
+      <td>{{ dish.course }}</td>
+      <td routerLink="/restaurant-page" [queryParams]="{ id: dish.restaurantId }" id="myToTry">{{ dish.restaurant }}</td>
+      <td>{{dish.overallScore}}</td>
+      <td>{{dish.dateTime | date: 'short'}}</td>
+      <!-- Include other td elements as needed -->
+    </tr>
+
+  </table>
 </div>

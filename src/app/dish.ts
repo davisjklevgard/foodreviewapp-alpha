@@ -8,5 +8,7 @@ export interface Dish {
   favorite: boolean;
   dislike: boolean;
   restaurantId: number;
+  dateTime: string;
+  overallScore: number;
 }
 
